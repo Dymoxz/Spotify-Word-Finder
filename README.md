@@ -5,4 +5,4 @@
 ![spotipy word finder](https://i.ibb.co/ctrbcKX/Spotipy-Word-Finder.png)
 
 
-A python bot which will search trough spotify for songs with animals in the title
+This is a spotify bot in which you can searh for words in song titles, based on the genre or artist
