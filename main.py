@@ -5,7 +5,8 @@ from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint
 from pyfiglet import figlet_format
-
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="8e69f7d8ddfa45f1888b56411e0ac440",
                                                            client_secret="0f742321201f4e5996021d59d2608922"))
@@ -19,6 +20,9 @@ print('')
 while True:
     with open('animal_names.txt') as input_file:
         animalNames = [line.strip() for line in input_file]
+
+    with open('countries.txt') as input_file:
+        countryNames = [line.strip() for line in input_file]
 
     def genre1(offset, genre):
         i1 = 0
@@ -44,11 +48,13 @@ while True:
 
             i1 = i1 + 1
 
-    searchWhat = input('What do you want to search? (1/2): \n 1. Animal Names \n 2. Custom \n')
+    searchWhat = input('What do you want to search? (1/2): \n 1. Animal Names \n 2. Countries \n 3. Custom \n')
     if searchWhat == '1':
         whatToSearch = animalNames
     elif searchWhat == '2':
-        customSearch = input('What word do you want to search? \n')
+        whatToSearch = countryNames
+    elif searchWhat == '3':
+        customSearch = input('What word do you want to search? (e.g.: house, car, what, who): \n')
         whatToSearch = customSearch.split(',')
 
     amount = input('How much song do you want to search through (max = 1000): \n')
@@ -97,3 +103,20 @@ while True:
     else:
         print("Lol Noob xD")
         break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
