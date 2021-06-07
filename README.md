@@ -13,7 +13,5 @@
       |_|                    |___/                                                         
 ```` 
 
-![spotipy word finder](https://i.ibb.co/ctrbcKX/Spotipy-Word-Finder.png)
-
 
 This is a spotify bot in which you can searh for words in song titles, based on the genre or artist
