@@ -13,5 +13,5 @@
       |_|                    |___/                                                         
 ```` 
 
+A terminal application, made with Python and Spotipy, to search through songs and collect those with specified words in them
 
-This is a spotify bot in which you can searh for words in song titles, based on the genre or artist
