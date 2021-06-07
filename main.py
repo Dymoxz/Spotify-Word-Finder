@@ -23,6 +23,8 @@ while True:
 
     with open('countries.txt') as input_file:
         countryNames = [line.strip() for line in input_file]
+    numbers = list(range(1000))
+
 
     def genre1(offset, genre):
         i1 = 0
@@ -48,7 +50,7 @@ while True:
 
             i1 = i1 + 1
 
-    searchWhat = input('What do you want to search? (1/2/3): \n 1. Animal Names \n 2. Countries \n 3. Custom \n > ')
+    searchWhat = input('What do you want to search? (1/2/3): \n 1. Animal Names \n 2. Countries \n 3. Numbers \n 4. Custom \n > ')
 
 
     if searchWhat == '1':
@@ -56,6 +58,8 @@ while True:
     elif searchWhat == '2':
         whatToSearch = countryNames
     elif searchWhat == '3':
+        whatToSearch = [format(x) for x in numbers]
+    elif searchWhat == '4':
         customSearch = input('What word do you want to search? (e.g.: house, car, what, who): \n > ')
         whatToSearch = customSearch.split(',')
 
