@@ -5,8 +5,8 @@ from colorama import init
 init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
 from termcolor import cprint
 from pyfiglet import figlet_format
-import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
+#import sys
+#from PySide6.QtWidgets import QApplication, QMainWindow
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="8e69f7d8ddfa45f1888b56411e0ac440",
                                                            client_secret="0f742321201f4e5996021d59d2608922"))
@@ -48,22 +48,25 @@ while True:
 
             i1 = i1 + 1
 
-    searchWhat = input('What do you want to search? (1/2): \n 1. Animal Names \n 2. Countries \n 3. Custom \n')
+    searchWhat = input('What do you want to search? (1/2/3): \n 1. Animal Names \n 2. Countries \n 3. Custom \n > ')
+
+
     if searchWhat == '1':
         whatToSearch = animalNames
     elif searchWhat == '2':
         whatToSearch = countryNames
     elif searchWhat == '3':
-        customSearch = input('What word do you want to search? (e.g.: house, car, what, who): \n')
+        customSearch = input('What word do you want to search? (e.g.: house, car, what, who): \n > ')
         whatToSearch = customSearch.split(',')
 
-    amount = input('How much song do you want to search through (max = 1000): \n')
+    print('')
+    amount = input('How much song do you want to search through (max = 1000): \n > ')
     if int(amount) > 1000:
         print('Invalid Value')
         continue
-
-    searchBy = input('Do you want to search by (1/2): \n 1. Genre \n 2. Artist \n')
-
+    print('')
+    searchBy = input('Do you want to search by (1/2): \n 1. Genre \n 2. Artist \n > ')
+    print('')
 
 
 
@@ -72,7 +75,7 @@ while True:
         offsetA1 = 0
         repeatA1 = 0
         amountOfRepeats = int(amount) / 50 - 1
-        artistInput = input('Enter artist: ')
+        artistInput = input('Enter artist: \n > ')
         while repeatA1 < amountOfRepeats:
             artist1(offset=offsetA1 + 50, artist=artistInput)
             offsetA1 += 50
@@ -82,7 +85,7 @@ while True:
         offsetG1 = 0
         repeatG1 = 0
         amountOfRepeats = int(amount) / 50 - 1
-        genreInput = input('Enter genre: ')
+        genreInput = input('Enter genre: \n > ')
         while repeatG1 < amountOfRepeats:
             genre1(offset=offsetG1 + 50, genre=genreInput)
             offsetG1 += 50
@@ -94,14 +97,15 @@ while True:
 
 
     while True:
-        answer = str(input('Restart? (y/n): '))
+        answer = str(input('Restart? (y/n): \n > '))
         if answer in ('y', 'n'):
             break
-        print("invalid input.")
+        print('invalid input.')
     if answer == 'y':
         continue
+        print('')
     else:
-        print("Lol Noob xD")
+        cprint('Lol Noob xD', 'green')
         break
 
 
