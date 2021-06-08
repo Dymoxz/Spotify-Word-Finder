@@ -26,21 +26,21 @@ while True:
     numbers1000 = list(range(1000))
 
 
-    def genre1(offset, genre):
+    def genre1(offset, genre, year):
         i1 = 0
-        results1 = sp.search(q='genre:' + genre, limit=50, offset=offset)
+        results1 = sp.search(q='genre:' + genre + ' ' + year, limit=50, offset=offset)
         while i1 < len(whatToSearch):
             for idx, track in enumerate(results1['tracks']['items']):
                 #print(idx, track['name'])
                 if whatToSearch[i1] in track['name']:
                     foundTrack1 = track['name']
-                    print('Genre: ' + genre + '    ' + foundTrack1)
+                    print('Genre: ' + genre + 'Year:' + year + '    ' + foundTrack1)
 
             i1 = i1 + 1
 
-    def artist1(offset, artist):
+    def artist1(offset, artist, year):
         i1 = 0
-        results1 = sp.search(q='artist:' + artist, limit=50, offset=offset)
+        results1 = sp.search(q='artist:' + artist + ' ' + year, limit=50, offset=offset)
         while i1 < len(whatToSearch):
             for idx, track in enumerate(results1['tracks']['items']):
                 #print(idx, track['name'])
@@ -99,19 +99,35 @@ while True:
         repeatG1 = 0
         amountOfRepeats = int(amount) / 50 - 1
         genreInput = input('Enter genre: \n > ')
-        while repeatG1 < amountOfRepeats:
-            genre1(offset=offsetG1 + 50, genre=genreInput)
-            offsetG1 += 50
-            repeatG1 += 1
+        searchByYear = input('Enter year: (leave empty if none) \n > ')
+        yearInput = 'year:' + searchByYear
+        if yearInput == '':
+            while repeatG1 < amountOfRepeats:
+                genre1(offset=offsetG1 + 50, genre=genreInput, year=searchByYear)
+                offsetG1 += 50
+                repeatG1 += 1
+        else:
+            while repeatG1 < amountOfRepeats:
+                genre1(offset=offsetG1 + 50, genre=genreInput, year=yearInput)
+                offsetG1 += 50
+                repeatG1 += 1
     elif searchBy == '2':
         offsetA1 = 0
         repeatA1 = 0
         amountOfRepeats = int(amount) / 50 - 1
         artistInput = input('Enter artist: \n > ')
-        while repeatA1 < amountOfRepeats:
-            artist1(offset=offsetA1 + 50, artist=artistInput)
-            offsetA1 += 50
-            repeatA1 += 1
+        searchByYear = input('Enter year: (leave empty if none) \n > ')
+        yearInput = 'year:' + searchByYear
+        if yearInput == '':
+            while repeatA1 < amountOfRepeats:
+                artist1(offset=offsetA1 + 50, artist=artistInput, year=searchByYear)
+                offsetA1 += 50
+                repeatA1 += 1
+        else:
+            while repeatA1 < amountOfRepeats:
+                artist1(offset=offsetA1 + 50, artist=artistInput, year=yearInput)
+                offsetA1 += 50
+                repeatA1 += 1
     elif searchBy == '3':
         offsetN1 = 0
         repeatN1 = 0
